@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="416"
+   height="416"
+   viewBox="0 0 416 416"
+   enable-background="new 0 0 512 512"
+   xml:space="preserve"
+   inkscape:version="0.48.4 r"
+   sodipodi:docname="lineChart.svg"><metadata
+     id="metadata3049"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs3047" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="755"
+     inkscape:window-height="480"
+     id="namedview3045"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="160"
+     inkscape:cy="165.57648"
+     inkscape:window-x="960"
+     inkscape:window-y="583"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" /><path
+     d="m 32,416 c 17.672,0 32,-14.313 32,-32 0,-10.531 -5.422,-19.438 -13.281,-25.281 l 41.406,-103.5 c 1.328,0.156 2.5,0.781 3.875,0.781 3.656,0 7.047,-0.938 10.328,-2.063 l 30,44.969 C 131.297,304.563 128,311.844 128,320 c 0,17.688 14.328,32 32,32 17.672,0 32,-14.313 32,-32 0,-11.188 -6.094,-20.563 -14.797,-26.281 l 44.703,-134.156 c 0.719,0.062 1.344,0.437 2.094,0.437 5.906,0 11.125,-2.031 15.875,-4.813 l 52.938,52.938 C 290.031,212.875 288,218.094 288,224 c 0,17.688 14.313,32 32,32 17.687,0 32,-14.313 32,-32 0,-11.188 -6.094,-20.563 -14.813,-26.313 L 381.906,63.562 C 382.625,63.625 383.25,64 384,64 401.688,64 416,49.687 416,32 416,14.313 401.688,0 384,0 c -17.688,0 -32,14.313 -32,32 0,11.188 6.094,20.563 14.813,26.313 L 322.094,192.438 C 321.375,192.375 320.75,192 320,192 c -5.906,0 -11.125,2.031 -15.875,4.813 L 251.187,143.875 C 253.968,139.125 256,133.906 256,128 c 0,-17.688 -14.313,-32 -32,-32 -17.687,0 -32,14.313 -32,32 0,11.188 6.094,20.563 14.813,26.313 L 162.079,288.407 C 161.359,288.375 160.734,288 160,288 c -3.656,0 -7.047,0.938 -10.328,2.094 l -30,-45.031 C 124.703,239.438 128,232.188 128,224 c 0,-17.688 -14.328,-32 -32,-32 -17.672,0 -32,14.313 -32,32 0,10.563 5.422,19.438 13.281,25.25 L 35.875,352.781 C 34.547,352.625 33.375,352 32,352 14.328,352 0,366.313 0,384 c 0,17.687 14.328,32 32,32 z"
+     id="path3043"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ssccsccsssccsccsssccssssccsccsssccsccsssccsss" /></svg>

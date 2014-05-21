@@ -7,16 +7,18 @@
         <script type="text/javascript" src="scripts/test.js"></script>
         <script type="text/javascript" src="scripts/moment.min.js"></script>
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Titillium+Web:700' rel='stylesheet' type='text/css'>
     </head>
     <body  onload="startTest()">
         <div id="header">
-        <h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
-
+        <h1>ANZ Championships</h1></div>
+        <br>
         <div id="toolbar">
-        <b>Menu</b><br>
-        HTML<br>
-        CSS<br>
-        JavaScript</div>
+            <a onclick="dispRank()" class="button selectedButton" id="rank">Overall Ranking</a>
+            <a onclick="dispGeo()" onclick="dispRank()" class="button" id="geo">Geographical Data</a>
+            <a onclick="dispPred()" class="button" id="prob">Predictability</a>
+            <a onclick="dispExp()" class="button" id="expl">Explore Matches</a>
+        </div>
 
         <div id="content">
         Content goes here</div>

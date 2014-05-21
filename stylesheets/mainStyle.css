@@ -1,20 +1,68 @@
 #header{
-    width:100%;
-    background-color:#FFA500;
+    background-color:#AACCB1;
+    margin-left: auto;
+    margin-right: auto;
+    border:3px solid black;
+    border-radius:30px;
+    padding: 5px 50px 5px 50px;
+    display: inline-block;
 }
 
 #toolbar{
     height:100%;
-    width:15%;
+    width:8%;
     max-width:300px;
     min-width:80px;
     float:left;
-    background-color:#FFD700;
 }
 
 #content{
     background-color:#EEEEEE;
-    height:100%
+    height:100%;
     width:100%;
-    min-width:800px;
 }
+
+.button{
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-color: #E1EDB9;
+    width: 100%;
+    height: 0;
+    padding: 4% 4% 120% 4%;
+    border:3px solid black;
+    border-radius:8%;
+    margin:4px;
+    text-align:center;
+    display:block;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: medium;
+}
+
+.button:hover{
+    background-color: #68B3AF;
+    cursor: pointer;
+}
+
+.selectedButton{
+    box-shadow: 15px 0 15px -7px rgba(0,0,0,0.3);
+}
+
+#rank{
+    background-image:url('../images/icons/lineChart.svg');
+}
+#geo{
+    background-image:url('../images/icons/globe.svg');
+}
+#prob{
+    background-image:url('../images/icons/die.svg');
+}
+#expl{
+    background-image:url('../images/icons/matches.svg');
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #F0F2EB;
+}
+
