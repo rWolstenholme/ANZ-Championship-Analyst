@@ -9,11 +9,9 @@
 }
 
 #toolbar{
-    height:100%;
     width:8%;
     max-width:300px;
     min-width:80px;
-    float:left;
 }
 
 #content{
@@ -64,5 +62,6 @@
 body{
     font-family: 'Lato', sans-serif;
     background-color: #F0F2EB;
+    height:100%;
 }
 
