@@ -41,40 +41,45 @@ function dispRank() {
     if (oldCanv) oldCanv.parentNode.removeChild(oldCanv);
     
     var bigMargin = 50;
-    var con = {xS:bigMargin,xB:width-bigMargin,yS:bigMargin,yB:height-bigMargin,w:width-bigMargin*2,h:height-bigMargin*2};
-
-    var xAxisScale = d3.scale.linear()
-        .domain([1, 17])
-        .range([0, con.w]);
-
-    var yAxisScale = d3.scale.linear()
-        .domain([0, 10])
-        .range([con.h, 0]);
-
-    var xAxis = d3.svg.axis()
-        .scale(xAxisScale)
-        .ticks(17)
-        .orient("bottom");
-
-    var yAxis = d3.svg.axis()
-        .scale(yAxisScale)
-        .ticks(10)
-        .orient("left");
-
-    var svg = d3.select("body").append("svg")
+    var con = {x:bigMargin,y:bigMargin,w:width-bigMargin*2,h:height-bigMargin*2};
+    
+     var svg = d3.select("body").append("svg")
         .attr("id", "canvas")
         .attr("width", width)
         .attr("height", height)
         .append("g")
-        .attr("transform", "translate(" + con.xS + "," + con.yS + ")");
+        .attr("transform", "translate(" + con.x + "," + con.y + ")");
+    
+    var gCon = {x:con.w*0.1,y:0,w:(con.w-bigMargin-con.w*0.1)*0.7,h:con.h-con.h*0.1};
 
-    svg.append("g")
+    var xAxisScale = d3.scale.linear()
+        .domain([0, 17])
+        .range([0, gCon.w]);
+
+    var yAxisScale = d3.scale.linear()
+        .domain([0, 10])
+        .range([gCon.h, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(xAxisScale)
+        .tickValues(d3.range(1, 18))
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(yAxisScale)
+        .tickValues(d3.range(1, 11))
+        .orient("left");
+
+    var graph = svg.append("g")
+        .attr("class", "graph")
+        .attr("transform", "translate(" +gCon.x +"," + gCon.y + ")");
+    
+    graph.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0," + con.h + ")")
+        .attr("transform", "translate(0," + gCon.h + ")")
         .call(xAxis);
 
-
-    svg.append("g")
+    graph.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(" + 0 + ",0)")
         .call(yAxis);
