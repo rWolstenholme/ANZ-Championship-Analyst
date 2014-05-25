@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>
-      D3 Test
+        D3 Test
     </title>
     <script type="text/javascript" src="scripts/d3.min.js">
     </script>
@@ -12,58 +13,35 @@
     <script type="text/javascript" src="scripts/moment.min.js">
     </script>
     <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Titillium+Web:700' rel='stylesheet' type='text/css'>
-  </head>
-  <body  onload="startTest()">
-    <table style="height:100%;width:100%;">
-      <tbody>
-        <tr>
-          <td colspan="2">
-			<div id="header">
-              <h1>
-                ANZ Championships
-              </h1>
-  </div>
-  
-  </td>
-  </tr>
-  <tr>
-    <td style="width:25%;">
-    </td>
-  </tr>
-  <tr><td>
-      <a onclick="dispRank()" class="button selectedButton" id="rank">
-        Overall Ranking
-      </a>
-  </td>
-  <td rowspan="4">
-      <div id="content">
-        Content goes here
-  </div>
-  </td></tr><tr><td>
-      <a onclick="dispGeo()" onclick="dispRank()" class="button" id="geo">
-        Geographical Data
-      </a>
-  </td></tr><tr><td>
-      <a onclick="dispPred()" class="button" id="prob">
-        Predictability
-      </a>
-  </td></tr><tr><td>
-      <a onclick="dispExp()" class="button" id="expl">
-        Explore Matches
-      </a>
-    </td>
-  </tr>
-          </tbody>
-      </table>
-      
-      
-      
-      
-      <!--
-<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
-</div>
--->
-      
-  </body>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Cuprum:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="startTest()">
+    <ul>
+        <li id="header" class="button">
+            ANZ Championships
+        </li>
+        <li class="button imageButton selectedButton" id="rank" onClick="changeSelected(this);dispRank();">
+            Rankings
+        </li>
+        <li class="button imageButton" id="geo" onClick="changeSelected(this);dispGeo();">
+            Geographical Data
+        </li>
+        <li class="button imageButton" id="prob" onClick="changeSelected(this);dispProb();">
+            Predictions
+        </li>
+        <li class="button imageButton" id="expl" onClick="changeSelected(this);dispExpl();">
+            Explore Matches
+        </li>
+    </ul>
+    
+
+
+
+    <svg id="canvas">
+    
+    </svg>
+
+</body>
+
 </html>

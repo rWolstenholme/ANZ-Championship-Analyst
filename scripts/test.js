@@ -25,3 +25,22 @@ function startTest() {
         });
     }
 }
+
+function dispRank(){
+}
+
+function dispGeo(){
+}
+
+function dispPred(){
+}
+
+function dispExpl(){
+}
+
+function changeSelected(toBeSelected){
+    [].forEach.call(document.getElementsByClassName("selectedButton"), function (el) {
+        el.classList.remove("selectedButton");
+    });
+    toBeSelected.classList.add("selectedButton");
+}
