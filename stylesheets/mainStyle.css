@@ -20,6 +20,7 @@ li {
     background-position: right;
     border-right: 2px black solid;
     -webkit-font-smoothing: antialiased;
+    text-align: center;
 }
 li:first-child {
     border-left: 2px black solid;
@@ -49,12 +50,15 @@ li:hover {
     background-image: url('../images/icons/matches.svg');
 }
 #canvas {
-    width: 100%;
-    float: left;
-    height: 100%;
+    position:fixed;
+    top:120px;
+    left:5px;
+    bottom:5px;
+    right:5px;
 }
 body {
     background-color: #F0F2EB;
+    background-image: url('../images/testLeather.png');
     margin 0px;
     padding 0px;
 }
