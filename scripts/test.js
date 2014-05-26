@@ -5,13 +5,13 @@ var dataPrefix = "http://www.ecs.vuw.ac.nz/~stuart";
 var redraw = dispRank;
 window.onresize = delayedRedraw;
 var width, height;
+var years;
 
 function startTest() {
     years = [];
     for (var i = yearStart; i <= yearEnd; i++) {
         var dataLoc = "data/" + i + dataSuffix;
-        var method = (i === 2009) ? d3.tsv : d3.csv;
-        method(dataLoc, function (games) {
+        d3.csv(dataLoc, function (games) {
             games = games.filter(function (game) {
                 return game.Date.lastIndexOf("BYES", 0) !== 0;
             });
@@ -50,19 +50,19 @@ function dispRank() {
         .append("g")
         .attr("transform", "translate(" + con.x + "," + con.y + ")");
     
-    var gCon = {x:con.w*0.1,y:0,w:(con.w-bigMargin-con.w*0.1)*0.7,h:con.h-con.h*0.1};
+    var gCon = {x:0,y:0,w:(con.w-bigMargin)*0.7,h:con.h-con.h*0.1};
 
     var xAxisScale = d3.scale.linear()
-        .domain([0, 17])
+        .domain([0, 14])
         .range([0, gCon.w]);
 
     var yAxisScale = d3.scale.linear()
-        .domain([0, 10])
+        .domain([11,1])
         .range([gCon.h, 0]);
 
     var xAxis = d3.svg.axis()
         .scale(xAxisScale)
-        .tickValues(d3.range(1, 18))
+        .tickValues(d3.range(1, 15))
         .orient("bottom");
 
     var yAxis = d3.svg.axis()
