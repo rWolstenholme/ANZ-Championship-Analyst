@@ -9,41 +9,62 @@ var years = [];
 var teams = {};
 
 function startTest() {
-    loadGames();
-    loadTeams();
-    updateDims();
-    redraw();
+    loadYear(yearStart);
 }
 
-function loadGames(){
-	for (var i = yearStart; i <= yearEnd; i++) {
-        var dataLoc = "data/" + i + dataSuffix;
+function loadYear(yearNumber){
+        var dataLoc = "data/" + yearNumber + dataSuffix;
         d3.csv(dataLoc, function (games) {
             games = games.filter(function (game) {
                 return game.Date.lastIndexOf("BYES", 0) !== 0;
             });
-
-            years.push(games.map(function (game) {
+            var year = ({year:yearNumber,games:(games.map(function (game) {
                 var scoreSplit = game.Score.split("–");
                 var time = game.time;
                 return {
                     round: +game.Round,
-                    date: (time) ? Date.parse(i + " " + game.Date + " " + game.Time) : Date.parse(i + " " + game.Date),
+                    date: (time) ? Date.parse(yearNumber + " " + game.Date + " " + game.Time) : Date.parse(yearNumber + " " + game.Date),
                     home: game["Home Team"],
                     away: game["Away Team"],
                     homePts: +scoreSplit[0],
                     awayPts: +scoreSplit[1],
                     venue: game.Venue
                 }
-            }));
-        });
-    };
+            }))});
+            performAnalysis(year);
+            years.push(year);
+           	if(yearNumber<yearEnd) loadYear(yearNumber+1);
+           	else loadTeams();
+    });
 }
+
+function performAnalysis(year){
+    		var games = year.games;
+    		var round = {};
+    		var rounds = [round];
+    		var rnd = 0;
+    		games.forEach(function(game){
+    			if(game.round-1>rnd){
+    				var newRnd = JSON.parse(JSON.stringify(round)) 
+					rounds.push(newRnd);
+					round = newRnd;
+					rnd++;
+    			}
+    			if(!game.home in round){
+					round[game.home]=0;
+    			}
+				if(!game.away in round){
+					round[game.away]=0;
+    			}
+    			round[game.home]+=game.homePts;
+    			round[game.away]+=game.awayPts;
+    		});
+    		year["rounds"]=rounds;
+    }
 
 function loadTeams(){
 	d3.csv("data/Teams.csv",function(tms){
 		tms.forEach(function(team){
-			console.log(JSON.stringify(team));
 			teams[team.Name]={
 				name:team.Name,
 				country:team.Country,
@@ -51,6 +72,8 @@ function loadTeams(){
 				sColor:team.SColor
 			};
 		});
+	  updateDims();
+    redraw();
 	});
 }
 
@@ -72,7 +95,7 @@ function dispRank() {
     var gCon = {x:20,y:0,w:(con.w-bigMargin-20)*0.7,h:con.h-con.h*0.1};
 
     var xAxisScale = d3.scale.linear()
-        .domain([0, 14])
+        .domain([-1, 14])
         .range([0, gCon.w]);
 
     var yAxisScale = d3.scale.linear()
@@ -94,22 +117,30 @@ function dispRank() {
         .attr("transform", "translate(" +gCon.x +"," + gCon.y + ")");
     
     graph.append("g")
-        .attr("class", "xAxis")
+        .attr("class", "axis")
         .attr("transform", "translate(0," + gCon.h + ")")
         .call(xAxis);
 
     graph.append("g")
-        .attr("class", "yAxis")
+        .attr("class", "axis")
         .attr("transform", "translate(" + 0 + ",0)")
         .call(yAxis);
-        
+   
 	graph.append("text")
    	 .attr("class", "axisLabel")
     	 .attr("text-anchor", "middle")
-   	 .attr("y",0)
-   	 .attr("x", (gCon.height-gCon.y)/2)
+   	 .attr("y",-40)
+   	 .attr("x", (gCon.y-gCon.h)/2)
    	 .text("Team Ranking")
    	 .attr("transform", "rotate(-90)");
+  	
+  	graph.append("text")
+   	 .attr("class", "axisLabel")
+    	 .attr("text-anchor", "middle")
+   	 .attr("y",gCon.h + 50)
+   	 .attr("x", (gCon.w-gCon.x)/2)
+   	 .text("Round");
+  
 }
 
 function dispGeo() {
