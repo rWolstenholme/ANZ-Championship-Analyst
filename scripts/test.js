@@ -42,20 +42,16 @@ function performAnalysis(year){
     		var games = year.games;
     		var round = {};
     		var rounds = [round];
-    		var rnd = 0;
+    		var rnd = 1;
     		games.forEach(function(game){
-    			if(game.round-1>rnd){
+    			if(game.round>rnd){
     				var newRnd = JSON.parse(JSON.stringify(round)) 
 					rounds.push(newRnd);
 					round = newRnd;
 					rnd++;
     			}
-    			if(!game.home in round){
-					round[game.home]=0;
-    			}
-				if(!game.away in round){
-					round[game.away]=0;
-    			}
+    			if(!game.home in round)round[game.home]=0;
+    			if(!game.away in round)round[game.away]=0;
     			round[game.home]+=game.homePts;
     			round[game.away]+=game.awayPts;
     		});
