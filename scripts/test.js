@@ -5,11 +5,18 @@ var dataPrefix = "http://www.ecs.vuw.ac.nz/~stuart";
 var redraw = dispRank;
 window.onresize = delayedRedraw;
 var width, height;
-var years;
+var years = [];
+var teams = {};
 
 function startTest() {
-    years = [];
-    for (var i = yearStart; i <= yearEnd; i++) {
+    loadGames();
+    loadTeams();
+    updateDims();
+    redraw();
+}
+
+function loadGames(){
+	for (var i = yearStart; i <= yearEnd; i++) {
         var dataLoc = "data/" + i + dataSuffix;
         d3.csv(dataLoc, function (games) {
             games = games.filter(function (game) {
@@ -31,8 +38,20 @@ function startTest() {
             }));
         });
     };
-    updateDims();
-    redraw();
+}
+
+function loadTeams(){
+	d3.csv("data/Teams.csv",function(tms){
+		tms.forEach(function(team){
+			console.log(JSON.stringify(team));
+			teams[team.Name]={
+				name:team.Name,
+				country:team.Country,
+				color:team.Color,
+				sColor:team.SColor
+			};
+		});
+	});
 }
 
 function dispRank() {
@@ -50,7 +69,7 @@ function dispRank() {
         .append("g")
         .attr("transform", "translate(" + con.x + "," + con.y + ")");
     
-    var gCon = {x:0,y:0,w:(con.w-bigMargin)*0.7,h:con.h-con.h*0.1};
+    var gCon = {x:20,y:0,w:(con.w-bigMargin-20)*0.7,h:con.h-con.h*0.1};
 
     var xAxisScale = d3.scale.linear()
         .domain([0, 14])
@@ -75,14 +94,22 @@ function dispRank() {
         .attr("transform", "translate(" +gCon.x +"," + gCon.y + ")");
     
     graph.append("g")
-        .attr("class", "x axis")
+        .attr("class", "xAxis")
         .attr("transform", "translate(0," + gCon.h + ")")
         .call(xAxis);
 
     graph.append("g")
-        .attr("class", "y axis")
+        .attr("class", "yAxis")
         .attr("transform", "translate(" + 0 + ",0)")
         .call(yAxis);
+        
+	graph.append("text")
+   	 .attr("class", "axisLabel")
+    	 .attr("text-anchor", "middle")
+   	 .attr("y",0)
+   	 .attr("x", (gCon.height-gCon.y)/2)
+   	 .text("Team Ranking")
+   	 .attr("transform", "rotate(-90)");
 }
 
 function dispGeo() {
