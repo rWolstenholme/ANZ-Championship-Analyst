@@ -7,6 +7,7 @@ window.onresize = delayedRedraw;
 var width, height;
 var years = [];
 var teams = {};
+var teamNames = [];
 
 function startTest() {
     loadTeams();
@@ -21,7 +22,8 @@ function loadYear(yearNumber) {
         var year = ({
             year: yearNumber,
             games: (games.map(function (game) {
-                var scoreSplit = game.Score.split("–");
+                var scoreSplit = game.Score.replace(/\(\d+[-–]\d+\)|draw/,"").split(/[-–]/);
+                if(scoreSplit[1]==undefined) console.log(game);
                 var time = game.time;
                 return {
                     round: +game.Round,
@@ -46,19 +48,29 @@ function loadYear(yearNumber) {
 
 function performAnalysis(year) {
     var games = year.games;
-    var round = [];
-    var rounds = [];
-    var rnd = 0;
+    var tms = {};
+    teamNames.forEach(function (team){
+        var newTeam = {};
+        newTeam["score"] = 0;
+        newTeam["rounds"] = [0,0];
+        tms[team] = newTeam;
+    });
     
     games.forEach(function (game) {
-        if (game.round > rnd) {
-            var newRnd = JSON.parse(JSON.stringify(round))
-            rounds.push(newRnd);
-            round = newRnd;
-            rnd++;
-        }
-        round[game.home] = (game.home in round) ? round[game.home] += game.homePts : round[game.home] = game.homePts;
-        round[game.away] = (game.away in round) ? round[game.away] += game.awayPts : round[game.away] = game.awayPts;
+        var homeTeam = tms[game.home];
+        var awayTeam = tms[game.away];
+        
+        if(isNaN(game.homePts)||isNaN(game.awayPts)){console.log(game);}
+        
+        if(game.round in homeTeam["rounds"]) homeTeam["rounds"][game.round] += game.homePts;
+        else homeTeam["rounds"][game.round] = game.homePts + homeTeam["score"];
+        
+        if(game.round in awayTeam["rounds"]) awayTeam["rounds"][game.round] += game.awayPts;
+        else awayTeam["rounds"][game.round] = game.homePts + awayTeam["score"];
+        
+        homeTeam["score"] += game.homePts;
+        awayTeam["score"] += game.awayPts;
+
         if(game.homePts>game.awayPts){
             teams[game.home].homeWins++;
             teams[game.away].awayLosses++;
@@ -68,13 +80,10 @@ function performAnalysis(year) {
             teams[game.away].awayWins++;
         }
     });
-    rounds.forEach(function(r){
-        r.sort(function(a,b){return a.value > b.value;});
-    });
-    year["rounds"] = rounds;
+    year["teams"] = tms;
 }
 
-function loadTeams() {
+function loadTeams(listOfTeams) {
     d3.csv("data/Teams.csv", function (tms) {
         tms.forEach(function (team) {
             teams[team.Name] = {
@@ -87,6 +96,7 @@ function loadTeams() {
                 awayWins: 0,
                 awayLosses: 0
             };
+            teamNames.push(team.Name);
         });
         loadYear(yearStart);
     });
@@ -123,8 +133,12 @@ function dispRank() {
         .domain([0, 14])
         .range([0, gCon.w]);
 
+    var maxY = 0;
+    teamNames.forEach(function(name){
+        maxY = Math.max(years[0].teams[name].score,maxY);
+    });
     var yAxisScale = d3.scale.linear()
-        .domain([11, 1])
+        .domain([0,maxY])
         .range([gCon.h, 0]);
 
     var xAxis = d3.svg.axis()
@@ -134,7 +148,6 @@ function dispRank() {
 
     var yAxis = d3.svg.axis()
         .scale(yAxisScale)
-        .tickValues(d3.range(1, 11))
         .orient("left");
 
     var graph = svg.append("g")
