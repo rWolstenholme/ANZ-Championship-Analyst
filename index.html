@@ -12,16 +12,19 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/geo.css"> 
     <link rel="stylesheet" type="text/css" href="stylesheets/prob.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/expl.css"> 
-    <script type="text/javascript" src="scripts/d3.min.js">
+    <link rel="stylesheet" type="text/css" href="stylesheets/tables-min.css"> 
+    <script type="text/javascript" src="scripts/d3.js">
     </script>
     <script type="text/javascript" src="scripts/test.js">
     </script>
     <script type="text/javascript" src="scripts/moment.min.js">
     </script>
+    <script type="text/javascript" src="scripts/sorttable.js"></script>
+    <script type="text/javascript" src="scripts/d3.min.js"></script>
 </head>
 
 <body onload="startTest()">
-    <ul>
+    <ul id='mainButs'>
         <li id="header" class="button">
             ANZ Championships
         </li>
@@ -31,13 +34,14 @@
         <li class="button imageButton" id="geo" onClick="changeSelected(this);dispGeo();">
             Geographical Data
         </li>
-        <li class="button imageButton" id="prob" onClick="changeSelected(this);dispProb();">
+        <li class="button imageButton" id="prob" onClick="changeSelected(this);dispPred();">
             Predictions
         </li>
         <li class="button imageButton" id="expl" onClick="changeSelected(this);dispExpl();">
             Explore Matches
         </li>
     </ul>
+    <div id="content"></div>
 </body>
 
 </html>

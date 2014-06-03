@@ -1,10 +1,10 @@
-ul {
+#mainButs {
     width: 100%;
     list-style: none;
     padding: 0px;
     margin: 0px;
 }
-li {
+.button {
     height: 100px;
     display: table-cell;
     width: 1%;
@@ -22,10 +22,10 @@ li {
     -webkit-font-smoothing: antialiased;
     text-align: center;
 }
-li:first-child {
+.button:first-child {
     border-left: 2px black solid;
 }
-li:hover {
+.button:hover {
     background-color: #68B3AF;
 }
 #header {
@@ -66,6 +66,7 @@ body {
 html {
     height: 100%;
     min-width: 1280px;
+    min-height: 900px;
     margin: 0px;
     padding: 0px;
 }

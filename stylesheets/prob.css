@@ -1,0 +1,28 @@
+#predictions{
+    
+    margin-left: auto;
+    margin-right:auto;
+    background: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}/*
+
+#predictions td{
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left:1px black solid;
+}
+
+#predictions thead{
+    font-weight: 700;
+    border-bottom: 1px black solid;
+    background-color:rgba(0,0,0,0.3); 
+}
+#predictions tr:nth-child(2n){
+  background: rgba(0,0,0,0.1.5);
+}*/
+#filterBar{
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+}

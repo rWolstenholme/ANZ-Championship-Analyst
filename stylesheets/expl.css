@@ -1,0 +1,67 @@
+.seg{
+    stroke-width:1;
+    stroke:black;
+    opacity: 0.7;
+}
+#yearSel{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    bottom:5%;
+    height:80%;
+}
+.yearBut {
+    display: block;
+    height:16.6%;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #E1EDB9;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 175%;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    border:1px solid black;
+}
+#roundSel{
+    list-style: none;
+    padding: 0px;
+    padding-right:7px;
+    margin: 0px;
+    position:absolute;
+    bottom:5%;
+    height:80%;
+    right:0px;
+}
+.roundBut {
+    display: block;
+    height:5.5%;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #E1EDB9;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 175%;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    border:1px solid black;
+}
+.yearBut:hover {
+    background-color: #68B3AF;
+}
+.gameLine{
+    stroke-width:15;
+    stroke:black;
+    stroke-linecap: round;
+    opacity:0.7;
+}
+
+.winnerLine{
+    stroke:green;
+}
+.loserLine{
+    stroke:red;
+}

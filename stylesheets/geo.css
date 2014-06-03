@@ -1,0 +1,13 @@
+.geoBox{
+    stroke:black;
+    fill:#FCD116;
+    stroke-width:3;
+}
+.geoPc{
+    fill:#a29e98;
+}
+.geoTxt{
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    font-size:200%;
+}
